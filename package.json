@@ -1,0 +1,16 @@
+{
+  "name": "cutters",
+  "version": "1.0.0",
+  "description": "Get Cutters salons sorted by wait time",
+  "main": "cutters.js",
+  "scripts": {
+    "start": "node cutters.js"
+  },
+  "bin": {
+    "cutters": "./cutters.js"
+  },
+  "keywords": [],
+  "author": "Mats Byrkjeland <matsbyr@gmail.com>",
+  "license": "MIT",
+  "dependencies": {}
+}
