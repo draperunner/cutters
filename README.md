@@ -27,3 +27,9 @@ Manipulate the result with common bash commands:
 ```
 npx cutters | grep Oslo | head -3
 ```
+
+Need to follow how wait times are changing?
+
+```
+watch -n 10 'cutters | grep Oslo | head -10'
+```
