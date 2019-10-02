@@ -17,18 +17,18 @@ function get(url) {
 
 async function printTimes() {
   try {
-    const res = await get('https://www.cutters.no/wp-content/themes/cutters/sql/ventetid.php')
+    const res = await get('https://www.cutters.no/api/salons')
     const salonsData = JSON.parse(res).data
     salonsData
-      .sort((a, b) => a.ventetid - b.ventetid)
-      .map(({ ventetid, venter, navn, sted }) => ({
-        ventetid: `${Math.round(ventetid / 60000)} min`,
-        venter,
-        navn,
-        sted,
+      .sort((a, b) => a.details.estimatedWait - b.details.estimatedWait)
+      .map(({ name, postalPlace, details }) => ({
+        estimatedWait: `${Math.round(details.estimatedWait / 60000)} min`,
+        numberOfWaiting: details.numberOfWaiting,
+        name,
+        postalPlace,
       }))
-      .forEach(({ navn, sted, ventetid, venter }) => {
-        console.log(`${navn.padEnd(30, ' ')}${sted.padEnd(14, ' ')}${ventetid}\t${venter} waiting`)
+      .forEach(({ name, postalPlace, estimatedWait, numberOfWaiting }) => {
+        console.log(`${name.padEnd(30, ' ')}${postalPlace.padEnd(14, ' ')}${estimatedWait}\t${numberOfWaiting} waiting`)
       })
   } catch (error) {
     console.error(error.message);
