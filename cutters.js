@@ -18,7 +18,7 @@ function get(url) {
 async function printTimes() {
   try {
     const res = await get('https://www.cutters.no/api/salons')
-    const salonsData = JSON.parse(res).data
+    const salonsData = JSON.parse(res).salons
     salonsData
       .sort((a, b) => a.details.estimatedWait - b.details.estimatedWait)
       .map(({ name, postalPlace, details }) => ({
